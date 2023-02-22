@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.nandro.randomgame.Views.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_colorGeneratorFragment"
+            app:destination="@id/colorGeneratorFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_guessTheWordFragment"
+            app:destination="@id/guessTheWordFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_rockPaperScissorsFragment"
+            app:destination="@id/rockPaperScissorsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/colorGeneratorFragment"
+        android:name="com.nandro.randomgame.Views.color_generator_game.ColorGeneratorFragment"
+        android:label="fragment_color_generator"
+        tools:layout="@layout/fragment_color_generator" >
+        <action
+            android:id="@+id/action_colorGeneratorFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/guessTheWordFragment"
+        android:name="com.nandro.randomgame.Views.guess_game.GuessTheWordFragment"
+        android:label="fragment_guess_the_word"
+        tools:layout="@layout/fragment_guess_the_word" />
+
+    <fragment
+        android:id="@+id/rockPaperScissorsFragment"
+        android:name="com.nandro.randomgame.Views.rock_paper_game.RockPaperScissorsFragment"
+        android:label="fragment_rock_paper_scissors"
+        tools:layout="@layout/fragment_rock_paper_scissors" />
+
+</navigation>
