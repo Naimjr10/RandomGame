@@ -19,29 +19,46 @@
             app:destination="@id/guessTheWordFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_rockPaperScissorsFragment"
-            app:destination="@id/rockPaperScissorsFragment" />
+            app:destination="@id/rockPaperScissorsFragment"
+            app:popUpTo="@id/welcomeFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/colorGeneratorFragment"
         android:name="com.nandro.randomgame.Views.color_generator_game.ColorGeneratorFragment"
         android:label="fragment_color_generator"
-        tools:layout="@layout/fragment_color_generator" >
-        <action
-            android:id="@+id/action_colorGeneratorFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_color_generator" />
 
     <fragment
         android:id="@+id/guessTheWordFragment"
         android:name="com.nandro.randomgame.Views.guess_game.GuessTheWordFragment"
         android:label="fragment_guess_the_word"
-        tools:layout="@layout/fragment_guess_the_word" />
+        tools:layout="@layout/fragment_guess_the_word" >
+        <action
+            android:id="@+id/action_guessTheWordFragment_self"
+            app:destination="@id/guessTheWordFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/rockPaperScissorsFragment"
-        android:name="com.nandro.randomgame.Views.rock_paper_game.RockPaperScissorsFragment"
+        android:name="com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment"
         android:label="fragment_rock_paper_scissors"
-        tools:layout="@layout/fragment_rock_paper_scissors" />
+        tools:layout="@layout/fragment_rock_paper_scissors" >
+        <action
+            android:id="@+id/action_rockPaperScissorsFragment_to_rockPaperResultFragment"
+            app:destination="@id/rockPaperResultFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rockPaperResultFragment"
+        android:name="com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperResultFragment"
+        android:label="RockPaperResultFragment" >
+        <action
+            android:id="@+id/action_rockPaperResultFragment_to_rockPaperScissorsFragment"
+            app:destination="@id/rockPaperScissorsFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
 
 </navigation>
