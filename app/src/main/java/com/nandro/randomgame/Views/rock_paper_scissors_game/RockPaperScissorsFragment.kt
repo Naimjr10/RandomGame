@@ -86,13 +86,13 @@ class RockPaperScissorsFragment : Fragment() {
         return view
     }
 
-    /*
+    // Reset the state when navigating to RockPaperResultFragment Class
     override fun onDestroyView() {
         super.onDestroyView()
         isRockSelected = false
         isPaperSelected = false
         isScissorsSelected = false
     }
-     */
+
 
 }
