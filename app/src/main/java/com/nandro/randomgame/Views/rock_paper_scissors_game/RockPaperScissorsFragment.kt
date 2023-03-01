@@ -20,7 +20,7 @@ class RockPaperScissorsFragment : Fragment() {
         var isScissorsSelected = false
 
         val listRockPaperScissors = listOf("Rock", "Paper", "Scissors")
-        lateinit var scramble: String
+        lateinit var computerImage: String
     }
 
 
@@ -55,21 +55,21 @@ class RockPaperScissorsFragment : Fragment() {
             isRockSelected = true
             isPaperSelected = false
             isScissorsSelected = false
-            scramble = listRockPaperScissors.random()
+            computerImage = listRockPaperScissors.random()
         }
 
         binding.radioPaper.setOnClickListener {
             isRockSelected = false
             isPaperSelected = true
             isScissorsSelected = false
-            scramble = listRockPaperScissors.random()
+            computerImage = listRockPaperScissors.random()
         }
 
         binding.radioScissors.setOnClickListener {
             isRockSelected = false
             isPaperSelected = false
             isScissorsSelected = true
-            scramble = listRockPaperScissors.random()
+            computerImage = listRockPaperScissors.random()
         }
 
         binding.startButton.setOnClickListener {
@@ -86,13 +86,13 @@ class RockPaperScissorsFragment : Fragment() {
         return view
     }
 
-    // Reset The State to the Beginning
-    // if we not override this, it still have the previous state
+    /*
     override fun onDestroyView() {
         super.onDestroyView()
         isRockSelected = false
         isPaperSelected = false
         isScissorsSelected = false
     }
+     */
 
 }

@@ -26,16 +26,15 @@ import com.nandro.randomgame.databinding.FragmentColorGeneratorBinding
 class ColorGeneratorFragment : Fragment() {
 
     lateinit var binding: FragmentColorGeneratorBinding
-    var colorHasGenerated = false
-    var hexHasGenerated = false
     var hexCode = ""
+//    var colorHasGenerated = false
+//    var hexHasGenerated = false
 
 
-    val COLOR_HAS_GENERATED_KEY = "color has generated"
-    val HEX_HAS_GENERATED_KEY = "hex has generated"
-    val HEX_CODE_KEY = "hex code"
+//    val COLOR_HAS_GENERATED_KEY = "color has generated"
+//    val HEX_HAS_GENERATED_KEY = "hex has generated"
+//    val HEX_CODE_KEY = "hex code"
 
-//    var bundle: Bundle? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +47,6 @@ class ColorGeneratorFragment : Fragment() {
         binding = FragmentColorGeneratorBinding.inflate(inflater, container, false)
         val view = binding.root
 
-//        bundle = savedInstanceState
 
         /*
         if (savedInstanceState != null) {
@@ -61,39 +59,43 @@ class ColorGeneratorFragment : Fragment() {
          */
 
         binding.colorGeneratorButton.setOnClickListener {
-
-            val redChannelInput = binding.redChannel.text.toString()
-            val greenChannelInput = binding.greenChannel.text.toString()
-            val blueChannelInput = binding.blueChannel.text.toString()
-
-
-            if (redChannelInput.length < 2 || greenChannelInput.length < 2 ||
-                blueChannelInput.length < 2) {
-
-                Toast.makeText(activity, "Please fill each channel at least 2 Characters",
-                    Toast.LENGTH_SHORT).show()
-
-            } else {
-                hexCode = '#'.plus(redChannelInput + greenChannelInput + blueChannelInput)
-                binding.generatedColorDisplayPanel.setBackgroundColor(Color.parseColor(hexCode))
-                binding.generatedHexCode.setText(hexCode)
-                colorHasGenerated = true
-                hexHasGenerated = true
-
-            }
+            generateColor()
 
         }
 
         return view
     }
 
+    fun generateColor() {
+        val redChannelInput = binding.redChannel.text.toString()
+        val greenChannelInput = binding.greenChannel.text.toString()
+        val blueChannelInput = binding.blueChannel.text.toString()
 
+
+        if (redChannelInput.length < 2 || greenChannelInput.length < 2 ||
+            blueChannelInput.length < 2) {
+
+            Toast.makeText(activity, "Please fill each channel at least 2 Characters",
+                Toast.LENGTH_SHORT).show()
+
+        } else {
+            hexCode = '#'.plus(redChannelInput + greenChannelInput + blueChannelInput)
+            binding.generatedColorDisplayPanel.setBackgroundColor(Color.parseColor(hexCode))
+            binding.generatedHexCode.setText(hexCode)
+//                colorHasGenerated = true
+//                hexHasGenerated = true
+
+        }
+
+    }
+
+/*
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         savedInstanceState.putString(HEX_CODE_KEY, hexCode)
         savedInstanceState.putBoolean(COLOR_HAS_GENERATED_KEY, colorHasGenerated)
         savedInstanceState.putBoolean(HEX_HAS_GENERATED_KEY, hexHasGenerated)
         super.onSaveInstanceState(savedInstanceState)
     }
-
+ */
 
 }

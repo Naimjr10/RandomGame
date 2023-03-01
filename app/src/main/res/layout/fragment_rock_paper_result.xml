@@ -9,7 +9,7 @@
     >
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/won_lose_message"
+        android:id="@+id/won_lost_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/won_lose_message"
+        app:layout_constraintTop_toBottomOf="@+id/won_lost_message"
         android:text="Rock Beat Scissors"
         android:textSize="36sp"
         style="@style/TextAppearance.MaterialComponents.Body1"

@@ -25,14 +25,17 @@ class WelcomeFragment : Fragment() {
         val view = binding.root
 
 
+        // Navigate to Color Generator Game
         binding.colorGeneratorButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_colorGeneratorFragment)
         }
 
+        // Navigate to Guess The Word Game
         binding.guessTheWordButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_guessTheWordFragment)
         }
 
+        // Navigate to Rock Paper Scissors Game
         binding.rockPaperScissorsButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_rockPaperScissorsFragment)
         }

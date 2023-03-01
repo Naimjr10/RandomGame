@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.navigation.fragment.findNavController
 import com.nandro.randomgame.R
+import com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment.Companion.computerImage
 import com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment.Companion.isPaperSelected
 import com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment.Companion.isRockSelected
 import com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment.Companion.isScissorsSelected
-import com.nandro.randomgame.Views.rock_paper_scissors_game.RockPaperScissorsFragment.Companion.scramble
+
 import com.nandro.randomgame.databinding.FragmentRockPaperResultBinding
 
 class RockPaperResultFragment : Fragment() {
@@ -25,6 +27,20 @@ class RockPaperResultFragment : Fragment() {
         binding = FragmentRockPaperResultBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        updatePlayerImage()
+        updateComputerImage()
+
+        updateWonLostText()
+
+        // Start a new game
+        binding.startButton.setOnClickListener {
+            findNavController().navigate(R.id.action_rockPaperResultFragment_to_rockPaperScissorsFragment)
+        }
+
+        return view
+    }
+
+    fun updatePlayerImage() {
         if (isRockSelected) {
             binding.rockPaperScissorsImage.setImageResource(R.drawable.batu)
         }
@@ -34,45 +50,44 @@ class RockPaperResultFragment : Fragment() {
         if (isScissorsSelected) {
             binding.rockPaperScissorsImage.setImageResource(R.drawable.gunting)
         }
-        if (scramble == "Rock") {
+    }
+
+    fun updateComputerImage() {
+        if (computerImage == "Rock") {
             binding.tandaTanyaImage.setImageResource(R.drawable.batu)
         }
-        if (scramble == "Paper") {
+        if (computerImage == "Paper") {
             binding.tandaTanyaImage.setImageResource(R.drawable.kertas)
         }
-        if (scramble == "Scissors") {
+        if (computerImage == "Scissors") {
             binding.tandaTanyaImage.setImageResource(R.drawable.gunting)
         }
+    }
 
-        if (isRockSelected == true && scramble == "Paper") {
-            binding.wonLoseMessage.text = "YOU LOSE!!"
+    fun updateWonLostText() {
+        if (isRockSelected == true && computerImage == "Paper") {
+            binding.wonLostMessage.text = "YOU LOSE!!"
             binding.wonLoseDescription.text = "Paper Beat Rock"
-        } else if (isRockSelected == true && scramble == "Scissors") {
-            binding.wonLoseMessage.text = "YOU WIN!!"
+        } else if (isRockSelected == true && computerImage == "Scissors") {
+            binding.wonLostMessage.text = "YOU WIN!!"
             binding.wonLoseDescription.text = "Rock Beat Scissors"
-        } else if (isPaperSelected == true && scramble == "Rock") {
-            binding.wonLoseMessage.text = "YOU WIN!!"
+        } else if (isPaperSelected == true && computerImage == "Rock") {
+            binding.wonLostMessage.text = "YOU WIN!!"
             binding.wonLoseDescription.text = "Paper Beat Rock"
-        } else if (isPaperSelected == true && scramble == "Scissors") {
-            binding.wonLoseMessage.text = "YOU LOSE!!"
+        } else if (isPaperSelected == true && computerImage == "Scissors") {
+            binding.wonLostMessage.text = "YOU LOSE!!"
             binding.wonLoseDescription.text = "Scissors Beat Paper"
-        } else if (isScissorsSelected == true && scramble == "Rock") {
-            binding.wonLoseMessage.text = "YOU LOSE!!"
+        } else if (isScissorsSelected == true && computerImage == "Rock") {
+            binding.wonLostMessage.text = "YOU LOSE!!"
             binding.wonLoseDescription.text = "Rock Beat Scissors"
-        } else if (isScissorsSelected == true && scramble == "Paper") {
-            binding.wonLoseMessage.text = "YOU WIN!!"
+        } else if (isScissorsSelected == true && computerImage == "Paper") {
+            binding.wonLostMessage.text = "YOU WIN!!"
             binding.wonLoseDescription.text = "Scissors Beat Paper"
         } else {
-            binding.wonLoseMessage.text = "DRAW!!"
-            binding.wonLoseDescription.text = ""
+            binding.wonLostMessage.text = "DRAW!!"
+//            binding.wonLoseDescription.text = ""
+            binding.wonLoseDescription.isInvisible = true
         }
-
-
-        binding.startButton.setOnClickListener {
-            findNavController().navigate(R.id.action_rockPaperResultFragment_to_rockPaperScissorsFragment)
-        }
-
-        return view
     }
 
 }
