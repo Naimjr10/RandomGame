@@ -66,6 +66,7 @@ class GuessTheWordFragment : Fragment() {
         binding.wordToGuessTextView.text = "_".repeat(wordToGuess.length)
 
 
+
         binding.livesLeftTextView.text = "You have $livesLeft lives left"
         binding.clueBodyTextView.text = generateClue()
     }
@@ -82,7 +83,7 @@ class GuessTheWordFragment : Fragment() {
         updateImageView()
         binding.wonLostMessageTextView.isVisible = true
         binding.revealOrNewButton.isVisible = true
-        // When got clicked, it will reset the top level state and back on guessing screen (New game)
+        // When got clicked, it will reset the state and back on guessing screen (New game)
         binding.revealOrNewButton.setOnClickListener {
             findNavController().navigate(R.id.action_guessTheWordFragment_self)
         }
